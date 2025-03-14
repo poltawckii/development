@@ -1,0 +1,24 @@
+
+.Unit{
+        display: flex;
+        align-items: center;
+        background-color:  rgba(40, 40, 40, 0.207);
+        width: 320px; /* Задайте ширину блока */
+        white-space: nowrap; /* Запрещает перенос строк */
+        overflow: hidden; /* Скрывает все, что выходит за границы */
+        text-overflow: ellipsis; /* Добавляет многоточие в конце обрезанной строки */
+        cursor: pointer; /* Меняет вид курсора при наведении */
+        height: 35px;
+}
+.value{
+        display: flex;
+}
+.value a{
+        color:rgba(161, 161, 161, 0.984);
+        font-size: 14px;
+        font-weight: bold;
+        font-family: 'Arial', sans-serif;
+        line-height: 1.6;
+        display:flex;
+        justify-content: center;
+}

@@ -1,0 +1,95 @@
+.block1{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+.persAcc{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    height: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+.listLinks{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    height: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+.fullAva{
+    display: flex;
+    justify-content: center;
+    height: 200px;
+    width: 200px;
+    position: relative;
+    @media (max-width: 760px){
+        width: 100%;
+        height: 100px;
+    }
+}
+.fullAva img{
+    height: 100%;
+    width: 200px;
+    object-fit: cover;
+    position: relative;
+}
+.wrapperInput{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    opacity: 0.05;
+    overflow: hidden;
+    position: absolute;
+}
+.wrapperInput img{
+    display: flex;
+    justify-content: center;
+    position: absolute;
+}
+.wrapperInput:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+.inputAva {
+    cursor: pointer;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    left: 0;
+    z-index: 99;
+}
+.labelAva{
+    display: none;
+}
+.aside_left_categories{
+    color:rgba(161, 161, 161, 0.984);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 200px;
+    height: 300px;
+}
+.aside_left_categories a{
+    font-size: 28px;
+    font-family:'Arial', sans-serif;
+    font-weight: bold;
+    color:rgba(29, 29, 29, 0.82);
+    text-decoration: none;
+}
+.aside_left_categories button{
+    background-color: transparent;
+    border: none;
+    color:rgba(29, 29, 29, 0.82);
+    font-size: 18px;
+    cursor: pointer;
+}
+.aside_left_categories button:hover{
+    text-decoration: underline;
+}
+

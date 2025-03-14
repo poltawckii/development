@@ -1,0 +1,27 @@
+.menu{
+    display:flex;
+    flex-direction:column;
+    width:100%;
+    height:100%;
+    overflow-y: scroll;
+}
+.menuFilm{
+    height:20%;
+    width:100%;
+    display:flex;
+    text-decoration: none;
+}
+.menuFilm div{
+    color:rgba(161, 161, 161, 0.984);
+    font-size: 14px;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    margin-bottom: 1em;
+    display:flex;
+    align-items:center;
+    margin-left: 3px;
+}
+.menuFilm div:hover{
+    filter: brightness(0.7);
+}

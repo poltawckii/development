@@ -1,0 +1,44 @@
+.modal_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Убедитесь, что модальное окно поверх всего */
+    overflow: auto;
+}
+
+.modal {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    position: relative; /* Добавляем позицию для дочернего элемента */
+    width: 100%;
+    height:100%;
+    overflow: hidden;
+}
+
+
+.modal_close_button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: pink;
+    width: 50px;
+    height: 30px;
+    background-image: url('https://avatars.mds.yandex.net/i?id=f0cd01682e5cdbdcb83c45cc19d98b71_l-5220428-images-thumbs&n=13');
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 10000;
+}
+.modal_content{
+    height:100%;
+}

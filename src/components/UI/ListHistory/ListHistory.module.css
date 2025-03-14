@@ -1,0 +1,35 @@
+.rateFilm{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    top: 6px;
+    left: 6px;
+    width: 25%;
+    height: 10%;
+    background-color: blue;
+}
+.rateFilm h4{
+    color: rgba(255, 255, 255, 0.466);
+    font-size: 18px;
+}
+.favourite{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 200px;
+    position: relative;
+}
+.favourite img{
+    width: 133px;
+    height: 100%;
+    object-fit: cover;
+}
+.block2_gridFavourites{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    overflow-y: scroll;
+    justify-items: center;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}

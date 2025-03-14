@@ -1,0 +1,186 @@
+.Main__About{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    background-color: rgb(31, 28, 28);
+}
+
+.About {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(31, 28, 28);
+    align-items: center;
+}
+.About a {
+    color:rgba(161, 161, 161, 0.984);
+    font-size: 14px;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    display:flex;
+    justify-content: center;
+}
+.Global h4{
+    color:rgba(161, 161, 161, 0.984);
+}
+.About_Film{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+.Info_Film{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 30%;
+}
+.About a:hover{
+    filter: brightness(0.7);
+}
+.Name_Film h1{
+    color:rgba(161, 161, 161, 0.984);
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    display:flex;
+    justify-content: center;
+}
+.obertka_about_info{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(40, 40, 40, 0.207);
+    width: 30%;
+}
+.obertka_Description_Film{
+    display: flex;
+
+    width: 100%;
+}
+.Description_Film{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+.Actors_Film{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 40%;
+}
+.Unit{
+    display: flex;
+    align-items: center;
+    background-color:  rgba(40, 40, 40, 0.207);
+    width: 100%; /* Задайте максимальную ширину */
+    overflow: hidden; /* Скройте лишний текст */
+    text-overflow: ellipsis; /* Добавьте троеточие */
+    white-space: nowrap; /* Запретите перенос строк */
+    height: 35px;
+}
+.About p{
+    color:rgba(161, 161, 161, 0.984);
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.About h1{
+    color: rgb(210, 209, 209);
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+}
+.Trailer{
+    display: flex;
+    justify-content: center;
+    width: 280px;
+    height: 140px;
+}
+.NotTrailer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.NotTrailer img{
+    height: 200px;
+}
+.NotTrailer h2{
+    font-size: 28px;
+    color: rgb(210, 209, 209);
+}
+.obertka_about_logo{
+    display: flex;
+    justify-content: start;
+    height: 400px;
+}
+#about_logo {
+    object-fit: cover;
+}
+.butWatchFilm{
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.butWatchFilm :hover{
+    filter: brightness(0.7);
+    transform: scale(1.1);
+
+}
+.Global {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(255, 255, 255, 0.466);
+    height: 100%;
+    background-color:  rgba(19, 4, 4, 0.207);
+    overflow: hidden;
+}
+.Name {
+    display: flex;
+    height: 10%;
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.466);
+}
+.Name h4{
+    color:rgba(29, 29, 29, 0.818);
+}
+.textCarousel{
+    display: flex;
+    margin: 10px;
+    align-items: center;
+    font-size: 28px;
+    height: 90px;
+    color: rgb(210, 209, 209);
+}
+.favourite{
+    margin-left: 10px;
+    height:50px;
+    width: 50px;
+}
+.favourite img {
+    height: 100%;
+    object-fit: cover;
+}
+.nameSVG{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100px;
+}
+.buttonFavourite{
+    height: 100%;
+    cursor: pointer;
+    background-color: rgb(31, 28, 28);
+    border: none;
+}

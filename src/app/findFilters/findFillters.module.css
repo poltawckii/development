@@ -1,0 +1,157 @@
+.Main{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width:92%;
+    height: 95%;
+    background-color: rgb(31, 28, 28);
+    margin-left: 10px;
+}
+.Center{
+    display: flex;
+    height: 600px;
+    justify-content: center;
+    align-items: center;
+}
+.wrapperBlock1{
+    display: flex;
+    flex-direction: column;
+    width: 33%;
+    height: 80%;
+    background-color: rgba(161, 161, 161, 0.984);
+    border-radius: 8%;
+}
+.block2{
+    display: flex;
+    flex-direction: column;
+    width: 62%;
+    height: 90%;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(161, 161, 161, 0.984);
+    border-radius: 4%;
+}
+.block2_gridFind{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    overflow-y: scroll;
+    justify-items: center;
+    width: 100%;
+    height: 95%;
+    justify-content: center;
+}
+.block2_gridFind_wrapper{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 200px;
+    position: relative;
+}
+.block2_gridFind_wrapper img{
+    width: 133px;
+    height: 100%;
+    object-fit: cover;
+}
+.wrapperEmail h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:rgba(29, 29, 29, 0.82);
+    font-size: 20px;
+}
+.linkLogout{
+    display: flex;
+    justify-content: center;
+}
+.LogOut:hover {
+    background-color: red;
+    color: black;
+}
+.filter{
+    display: flex;
+    width: 310px;
+    @media (max-width: 768px) {
+        width: 150px;
+    }
+}
+.filter h2{
+    display: flex;
+    width: 70%;
+    font-size: 20px;
+    color:rgba(29, 29, 29, 0.82);
+}
+.halfBlock{
+    display: flex;
+    flex-direction: column;
+    height: 85%;
+    justify-content: space-between;
+}
+.wrapperBlock1 h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size:34px;
+    color:rgba(29, 29, 29, 0.82);
+}
+.input{
+    margin-left: 10px;
+    @media (max-width: 768px) {
+        width: 150px;
+    }
+    background-color: #cbc9c9; /* Темно-серый фон инпута */
+    color: #3f3e3e; /* Белый текст */
+    font-family:'Arial', sans-serif;
+    width: 300px; /* Ширина инпута */
+    transition: border-color 0.3s; /* Плавный переход для цвета рамки */
+}
+.wrapperImg{
+    display: flex;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border:none;
+}
+.wrapperImg img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.wrapperFindImg{
+    display: flex;
+}
+.wrapperFindImg button:hover{
+    cursor: pointer;
+}
+.rateFilm{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    top: 6px;
+    left: 6px;
+    width: 25%;
+    height: 10%;
+    background-color: blue;
+}
+.rateFilm h4{
+    color: rgba(255, 255, 255, 0.466);
+    font-size: 18px;
+}
+.swapEmptyImg{
+    display: flex;
+    justify-content: center;
+    width: 133px;
+    height: 200px;
+    background-color: rgba(152, 133, 133, 0.98);
+}
+.nameFilm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:rgba(29, 29, 29, 0.82);
+    width: 120px;
+}
+.nameFilm h3{
+    color:rgba(29, 29, 29, 0.82);
+    display: flex;
+    justify-content: center;
+}

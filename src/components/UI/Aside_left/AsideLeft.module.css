@@ -1,0 +1,24 @@
+.aside_left{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    border: 1px solid rgba(255, 255, 255, 0.466);
+    background-color:  rgba(19, 4, 4, 0.207);
+}
+.aside_left_categories{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 200px;
+    height: 300px;
+}
+.aside_left_categories a{
+    font-size: 28px;
+    font-family:'Arial', sans-serif; 
+    font-weight: bold;
+    color: rgba(29, 29, 29, 0.818);
+    text-decoration: none;
+    color: black;
+}

@@ -1,0 +1,121 @@
+.main{
+    display: flex;
+    justify-content: center;
+    height: 480px;
+    align-items: center;
+    background-image: url("https://gtrk-saratov.ru/files/2022-09/qs7ukchehpoxaz6tok4lrjmii3f_zyre4bzwvyk0cpsixrkhdpzod9wklg4njau018wu2a7vuqvbcslpaw1uusq4.jpg");
+    background-size: cover;
+    background-position: center;
+}
+.login{
+    display: flex;
+    border-radius: 5%;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 90%;
+    width: 30%;
+    background-color: rgb(40, 40, 40);
+}
+.login h1{
+    color: rgba(161, 161, 161, 0.984);
+    font-size: 36px;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+}
+.login_input_eMail{
+    display: flex;
+    align-items: center;
+    background-color: rgba(161, 161, 161, 0.984);
+    width: 70%;
+    height: 35px;
+    border-radius: 10px;
+}
+.login_input_eMail_text{
+    padding-left: 10px;
+    border: none;
+    width:100%;
+    height:100%;
+    background-color: rgba(161, 161, 161, 0.984);
+    border-radius: 10px;
+    color: rgb(40, 40, 40);
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+}
+.login_rememberMe{
+    display:flex;
+    justify-content: space-between;
+    width:37%;
+}
+.login_rememberMe_checkbox{
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(161, 161, 161, 0.984);
+}
+.login_rememberMe_label{
+    color: rgba(161, 161, 161, 0.984);
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+}
+.login_input_pass{
+    display: flex;
+    align-items: center;
+    background-color: rgba(161, 161, 161, 0.984);
+    width: 70%;
+    height: 35px;
+    border-radius: 10px;
+}
+.login_input_pass_text{
+    padding-left: 10px;
+    border: none;
+    width:100%;
+    height:100%;
+    background-color: rgba(161, 161, 161, 0.984);
+    border-radius: 10px;
+    color: rgb(40, 40, 40);
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+}
+.login_forgotAndSocial{
+    display:flex;
+    justify-content: space-between;
+    width:70%;
+}
+.login_forgotPass{
+    color: rgba(161, 161, 161, 0.984);
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+    text-decoration: none;
+}
+.login_socialMedia{
+    display:flex;
+    cursor: pointer;
+}
+.login_socialMedia_element {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    transition: background-color 0.3s ease;
+}
+.login_socialMedia_element:hover {
+    background-color: rgb(114, 112, 112);
+}
+.login_button{
+    height: 40px;
+    width: 100px;
+    background-color: rgba(161, 161, 161, 0.984);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+.login_button:hover {
+    background-color: rgb(114, 112, 112);
+}
