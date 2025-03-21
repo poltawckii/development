@@ -1,21 +1,20 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import {IFavourite, IHistory} from "@/types/IState";
 
-interface historyState {
-    history: [] | undefined;
-}
 
-const initialState: historyState = {
+const initialState: IHistory = {
     history: [],
 };
-
 export const historySlice = createSlice({
     name: 'history',
     initialState,
     reducers: {
-        deleteHistory: (state, action: PayloadAction<{}>) => {
+        deleteHistory: (state, action: PayloadAction<IFavourite>
+        ) => {
             state.history = state.history.filter((item) => item.id !== action.payload.id);
         },
-        addHistory: (state, action: PayloadAction<{url: string | undefined, id: string}>) => {
+        addHistory: (state, action: PayloadAction<IFavourite>
+        ) => {
             if (!state.history.find((item) => item.id === action.payload.id)) {
                 state.history.push(action.payload);
             }

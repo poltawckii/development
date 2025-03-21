@@ -1,6 +1,16 @@
 import axios from 'axios';
+import React from "react";
 
-const fetchFilters = async (typeRef, genreRef, yearRef, yearStartRef, yearEndRef, ageRef, countryRef) => {
+interface PropsFilters {
+    typeRef: React.RefObject<HTMLSelectElement>;
+    genreRef: React.RefObject<HTMLSelectElement>;
+    yearRef: React.RefObject<HTMLInputElement>;
+    yearStartRef: React.RefObject<HTMLInputElement>;
+    yearEndRef: React.RefObject<HTMLInputElement>;
+    ageRef: React.RefObject<HTMLInputElement>;
+    countryRef: React.RefObject<HTMLInputElement>;
+}
+const fetchFilters = async ({typeRef, genreRef, yearRef, yearStartRef, yearEndRef, ageRef, countryRef} : PropsFilters) : Promise<any>  => {
     let type = typeRef.current?.value;
     let genre = genreRef.current?.value;
     let year = yearRef.current?.value;
@@ -11,11 +21,11 @@ const fetchFilters = async (typeRef, genreRef, yearRef, yearStartRef, yearEndRef
 
     let url = `https://api.kinopoisk.dev/v1.4/movie?page=1&limit=250&type=${type}&year=${year}&releaseYears.start=${yearStart}&releaseYears.end=${yearEnd}&ageRating=${age}&genres.name=${genre}&countries.name=${country}`;
     let arrFilters = [type, genre, year, yearStart, yearEnd, age, country];
-    let arrDelete = arrFilters.reduce((indices, element, index) => {
+    let arrDelete = arrFilters.reduce((indices : number[], element : string | undefined, index : number) => {
             if (element === '') indices.push(index);
             return indices;
         }, []); // Начальное значение - пустой массив
-    let newurl = arrDelete.map((item) => {
+    arrDelete.forEach((item) => {
         switch (item){
             case (0):
                 url = url.split("&type=").join("");
@@ -48,7 +58,6 @@ const fetchFilters = async (typeRef, genreRef, yearRef, yearStartRef, yearEndRef
                 'Content-Type': 'application/json',
             },
         });
-        console.log(response)
         return response?.data.docs;
     } catch (error) {
         console.error('Ошибка при запросе трейлера:', error);

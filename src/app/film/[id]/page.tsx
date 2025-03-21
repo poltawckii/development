@@ -5,47 +5,54 @@ import {
     useGetInfoActorsQuery,
     useGetInfoSimilarQuery
 } from "@/services/CozyEveningService";
-import {cozyeveningAPI1, useGetInfoTrailerQuery} from "@/services/CozyEveningTrailer";
+import {useGetInfoTrailerQuery} from "@/services/CozyEveningTrailer";
 import {useEffect, useRef, useState} from "react";
 import React from 'react';
 import styles from "@/app/film/About.module.css";
 import AboutDescription from "@components/UI/AboutDescription/AboutDescription";
-import Global from "@components/UI/Global/Global";
 import {useDispatch, useSelector} from 'react-redux';
-import {AppDispatch, RootState} from '@/store/store';
-import {useParams, usePathname} from "next/navigation";
+import {RootState} from '@/store/store';
+import {useParams} from "next/navigation";
 import {setId} from "@/store/reducers/idSlice";
 import UpperBlock from "@components/UI/IdFilmBlocks/UpperBlock";
 import DownBlock from "@components/UI/IdFilmBlocks/DownBlock";
 import {toInteger} from "lodash";
 import { TailSpin} from "react-loader-spinner";
-import {setFavourites} from "@/store/reducers/listFavourites";
-import getLogin from "@api/getLogin";
+import {IActors} from "@/types/IActors";
+import {setCarousel1} from "@/store/reducers/carouselSlice";
+import BlockFilms from "@components/UI/BlockFilms/BlockFilms";
 
 export default function Page() {
     const params = useParams();
-    const id1 = toInteger(params.id);
-    const dispatch = useDispatch<AppDispatch>();
+    const id1 : number = toInteger(params.id);
+    const dispatch = useDispatch();
     useEffect(() => {
         dispatch(setId(id1))
     }, [dispatch, id1]);
-    const id = useSelector((state: RootState) => state.id.id);
-    const prevIdRef = useRef(null);
-    if (prevIdRef.current !== id) {
-        dispatch(cozyeveningAPI.util.resetApiState());
-        prevIdRef.current = id;
-    }
+    const id : number | undefined = toInteger(useSelector((state: RootState) => state.id.id));
+    const prevIdRef = useRef<number | undefined>(undefined);
+    useEffect(() => {
+        if (prevIdRef.current !== id) {
+            dispatch(cozyeveningAPI.util.resetApiState());
+            prevIdRef.current = id;
+        }
+    }, [id, dispatch]);
     let { data: response} = useGetInfoAboutQuery(id, {skip: !id, refetchOnFocus: true});
     let { data: response1 } = useGetInfoActorsQuery(id, {skip: !id, refetchOnFocus: true});
     let { data: response2} = useGetInfoTrailerQuery(id, {skip: !id, refetchOnFocus: true});
     let {data: similarData} = useGetInfoSimilarQuery(id, {skip: !id, refetchOnFocus: true})
-    console.log(response1);
-    const extractNamesByProfession = (items: any[], profession: string) =>
+
+    useEffect(() => {
+        if (similarData) {
+            dispatch(setCarousel1(similarData));
+        }
+    }, [dispatch, similarData]);
+    const extractNamesByProfession = (items: undefined | IActors, profession: string) =>
         (items === undefined) ? undefined :
-            items?.filter(item => item.professionText === profession)
+            items?.filter(item => item?.professionText === profession)
             .map(item =>
-                (item.nameRu === '') ? item.nameEn + ',' : item.nameRu + ',')
-    const actorsNames = response1?.map(item => (item.nameRu === '') ? item.nameEn : item.nameRu);
+                (item.nameRu === '') ? item?.nameEn + ',' : item.nameRu + ',')
+    const actorsNames = response1?.map((item: {nameRu: string, nameEn: string}) => (item.nameRu === '') ? item.nameEn : item.nameRu);
     const arrayDescription = [
         { key: 'Год производства:', value: response?.year ?? 'Неизвестно' },
         { key: 'Страна:', value: response?.countries?.map(obj => obj.country) ?? 'Неизвестно' },
@@ -61,12 +68,11 @@ export default function Page() {
         { key: 'Возраст:', value: response?.ratingAgeLimits?.slice(3) + '+' ?? 'Неизвестно' },
         { key: 'Время:', value: response?.filmLength ?? 'Неизвестно' }
     ];
-    console.log(arrayDescription)
     const [isModalOpen, setIsModalOpen] = useState(false); // Состояние для открытия/закрытия модального окна
-    const openModal = () => {
+    const openModal : () => void = () => {
         setIsModalOpen(true); // Функция для открытия модального окна
     };
-    const closeModal = () => {
+    const closeModal : () => void = () => {
         setIsModalOpen(false); // Функция для закрытия модального окна
     };
     return (
@@ -79,8 +85,7 @@ export default function Page() {
                 openModal={openModal}
                 isModalOpen={isModalOpen}
                 closeModal={closeModal}
-                id={id}>
-            </UpperBlock>
+                id={id}/>
             <div className={styles.About}>
                 <div className={styles.Trailer}>
                 {(response2 === undefined) ?
@@ -113,14 +118,9 @@ export default function Page() {
                 </div>
             </div>
             {(similarData?.items[0] === undefined) ? <div className={styles.textCarousel}>Нет похожих фильмов</div> :
-            <Global
+            <BlockFilms
                 name={'Список похожих фильмов: '}
-                color="rgba(161, 161, 161, 0.984)"
-                id ={id || ''}
-                right={'5%'}
-                left={'93%'}
-                data={similarData}>
-            </Global>
+                data={similarData}/>
                 }
                 </>
 }

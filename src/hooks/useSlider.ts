@@ -1,6 +1,6 @@
 "use client"
 import { useState, useEffect, RefObject } from 'react';
-function UseSlider(sliderRef: RefObject<HTMLInputElement>) {
+function UseSlider(sliderRef: RefObject<HTMLDivElement>) {
     const [currentImage, setCurrentImage] = useState(0);
     const [imageCount, setImageCount] = useState(0); // Добавляем состояние для кол-ва картинок
     useEffect(() => {

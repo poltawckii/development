@@ -10,7 +10,7 @@ function DropDownMenuFilm({arrInfo} : {arrInfo : Array<any>}) {
         <div className={styles.menu}>
             {arrInfoSmall?.map((item: IAbout , index) => (
                 <Link href={`/film/${item.filmId}`} className={styles.menuFilm} key={index}>
-                    <img src={item.posterUrlPreview}/>
+                    <img alt={`find${index}`} src={item.posterUrlPreview}/>
                     <div>{item.nameRu}</div>
                 </Link>
             ))}

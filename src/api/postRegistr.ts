@@ -1,8 +1,8 @@
 
-import React from 'react';
+import {RefObject} from 'react';
 import axios from "axios";
 
-const postRegistr = async (eMailRef, passwordRef) => {
+const postRegistr = async ({eMailRef, passwordRef} : {eMailRef: RefObject<HTMLInputElement>, passwordRef: RefObject<HTMLInputElement>}) => {
         let eMail = eMailRef.current?.value;
         let password = passwordRef.current?.value;
         console.log(eMail, password);
@@ -18,7 +18,7 @@ const postRegistr = async (eMailRef, passwordRef) => {
             })
             alert(response?.data.message)
         }
-        catch(e){
+        catch(e:any){
             console.log(e?.response?.data.message)
         }
         finally{

@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface IdState {
-    id: string | undefined;
+    id: number | undefined;
 }
 
 const initialState: IdState = {
@@ -12,7 +12,7 @@ export const idSlice = createSlice({
     name: 'id',
     initialState,
     reducers: {
-        setId: (state, action: PayloadAction<string | undefined>) => {
+        setId: (state, action: PayloadAction<number | undefined>) => {
             state.id = action.payload;
         },
     },

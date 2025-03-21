@@ -1,9 +1,9 @@
-import React, {useState, ReactNode, FC} from 'react';
+import React, {ReactNode} from 'react';
 import  styles from  './ModalWindow.module.css';
 import KinoboxPlayer from "../KinoboxPlayer/KinoboxPlayer";
 
 // Модальное окно
-const ModalWindow = ({ isOpen, isClose, children, id } : {isOpen: boolean, isClose: () => void, children?: ReactNode, id: string | undefined}) => {
+const ModalWindow = ({ isOpen, isClose, children, id } : {isOpen: boolean, isClose: () => void, children?: ReactNode, id: number}) => {
     if (!isOpen) return null; // Если модальное окно закрыто, ничего не отображаем
     return (
         <div className={styles.modal_overlay}>

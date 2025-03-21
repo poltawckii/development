@@ -1,24 +1,28 @@
 "use client"
-import React, {useRef} from 'react';
+import React, {RefObject, useRef} from 'react';
 import styles from "./AccountInfo.module.css";
 import {swapList} from "@/store/reducers/listsSwap";
 import {useDispatch, useSelector} from "react-redux";
-import postAvatar from "@api/postAvatar";
+import {usePostAvatarMutation} from "@/services/CozyEveningLocal";
+import {IState} from "@/types/IState";
 
 const AccountInfo = () => {
     let dispatch = useDispatch();
-    let avatarRef = useRef<HTMLInputElement>(null);
-    let eMail = useSelector(state => state.token?.currentUser?.eMail);
-    let path = useSelector(state => state.token?.currentUser?.avatar);
+    let [postAvatar] = usePostAvatarMutation();
+    let avatarRef : RefObject<HTMLInputElement> = useRef(null);
+    let eMail = useSelector((state : IState) => state.token?.user?.eMail);
+    let path = useSelector((state : IState) => state.token?.user?.avatar);
     if (path === undefined){
         path = '/avatar2.png';
     }
     const createLink = () => {
-        let avatar = avatarRef.current?.files[0];
+        let files = avatarRef.current;
+        if (!files || !files.files || files.files.length === 0) return;
         const reader = new FileReader();
-        reader.readAsDataURL(avatar);
+        reader.readAsDataURL(files.files[0]);
         reader.onload = () => {
-            dispatch(postAvatar(eMail, reader.result)) // reader.result содержит base64 строку
+            let url = reader.result as string;
+            postAvatar({eMail, url}) // reader.result содержит base64 строку
         };
         reader.onerror = () => {
             console.error("There was an error reading the file!");

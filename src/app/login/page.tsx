@@ -1,14 +1,17 @@
 "use client"
-import {useEffect, useRef, useState} from 'react';
-import {useDispatch, useSelector} from "react-redux";
-import postLogin from "@api/postLogin";
+import {useEffect, useRef} from 'react';
+import {useSelector} from "react-redux";
 import styles from './Login.module.css';
+import {usePostLoginMutation} from "@/services/CozyEveningLocal";
 
 const LoginForm = () => {
     let eMailRef = useRef<HTMLInputElement>(null);
     let passwordRef = useRef<HTMLInputElement>(null);
-    let isAuth = useSelector(state => state.token?.isAuth);
-    let dispatch = useDispatch();
+    let isAuth = useSelector((state: {token: {isAuth: boolean}}) => state.token?.isAuth);
+    let [postLogin] = usePostLoginMutation()
+    let handleLogin = () => {
+        postLogin({eMail: eMailRef.current?.value, password: passwordRef.current?.value})
+    }
     useEffect(() => {
     }, [isAuth])
     return (
@@ -35,9 +38,7 @@ const LoginForm = () => {
                     </div>
                 </div>
                 <button className={styles.login_button}
-                        onClick={() => {
-                            dispatch(postLogin(eMailRef, passwordRef));
-                        }}>Вход
+                        onClick={handleLogin}>Вход
                 </button>
             </div>
         }

@@ -94,3 +94,14 @@
 .footer__links_obertka button:hover{
     filter: brightness(0.7);
 }
+.Global {
+    display: flex;
+    flex-direction: column;
+    background-color:  rgba(19, 4, 4, 0.207);
+    overflow: hidden;
+}
+.Name {
+    display: flex;
+    height: 10%;
+    width: 100%;
+}

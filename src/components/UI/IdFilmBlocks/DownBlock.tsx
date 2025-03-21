@@ -1,7 +1,12 @@
 import React from 'react';
 import styles from "@/app/film/About.module.css";
 import AboutDescription from "@components/UI/AboutDescription/AboutDescription";
-function DownBlock({arrayDescription}) {
+
+interface IArrayDescription {
+    key: string;
+    value: string | number | any[];
+}
+function DownBlock({arrayDescription} : {arrayDescription: IArrayDescription[]} ) {
     return (
         <div className={styles.obertka_about_info}>
             <h1>О фильме</h1>

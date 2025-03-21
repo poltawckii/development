@@ -1,33 +1,25 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {ICarousel} from "@/types/IState";
 
-interface carouselState {
-    carousel: {
-        items: [],
-        total: number,
-        totalPages: number
-    } | undefined;
-}
 
-const initialState: carouselState = {
-    carousel: undefined ,
+const initialState: ICarousel = {
+    carousel1: undefined ,
+    carousel2: undefined
 };
 
 export const carouselSlice = createSlice({
     name: 'carousel',
     initialState,
     reducers: {
-        setCarousel: (state, action: PayloadAction<object | undefined>) => {
-            state.carousel = action.payload;
-            state.isCarousel = true;
-            state.isResponse = true;
+        setCarousel1: (state, action: PayloadAction<any>) => {
+            state.carousel1 = action.payload;
         },
-        deleteCarousel: (state, action: PayloadAction<object | undefined>) => {
-            state.carousel = undefined;
-            state.isCarousel = false;
-        }
+        setCarousel2: (state, action: PayloadAction<any>) => {
+            state.carousel2 = action.payload;
+        },
     },
 });
 
-export const { setCarousel, deleteCarousel } = carouselSlice.actions;
+export const { setCarousel1, setCarousel2 } = carouselSlice.actions;
 
 export default carouselSlice.reducer;

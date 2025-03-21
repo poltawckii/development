@@ -63,3 +63,14 @@
 .rateFilm h4{
     color: rgba(255, 255, 255, 0.466);
 }
+.Global {
+    display: flex;
+    flex-direction: column;
+    background-color:  rgba(19, 4, 4, 0.207);
+    overflow: hidden;
+}
+.Name {
+    display: flex;
+    height: 10%;
+    width: 100%;
+}

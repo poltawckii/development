@@ -1,53 +1,53 @@
 "use client"
-import React, {useEffect, useRef, useState} from 'react';
+import React, {MutableRefObject, useEffect, useRef, useState} from 'react';
 import styles from "@/app/film/About.module.css";
 import ModalWindow from "@components/UI/ModalWindow/ModalWindow";
 import {IAbout} from "@/types/IAbout";
 import {useDispatch, useSelector} from "react-redux";
-import {addFavourite, addId, deleteFavourites, deleteId} from "@/store/reducers/listFavourites";
-import {current} from "@reduxjs/toolkit";
-import {post} from "axios";
-import {addHistory, setHistory} from "@/store/reducers/historyChecked";
-function UpperBlock({response, openModal, isModalOpen, closeModal, id}) {
+import {addFavourite, deleteFavourites} from "@/store/reducers/listFavourites";
+import {addHistory} from "@/store/reducers/historyChecked";
+import {useGetInfoCarouselQuery} from "@/services/CozyEveningService";
+function UpperBlock({response, openModal, isModalOpen, closeModal, id} :
+                        {response : IAbout, openModal :  () => void, isModalOpen : boolean, closeModal  : () => void, id : number}) {
     let {
-        slogan,
         description,
-        genres,
-        year,
-        ratingAgeLimits,
-        filmLength,
-        countries,
         nameRu,
         posterUrl,
         ratingKinopoisk,
-        ratingKinopoiskVoteCount
-    }: IAbout = {
+        ratingKinopoiskVoteCount,
+        nameOriginal,
+        nameEn,
+        ratingImdb,
+        ratingImdbVoteCount
+    } = {
         ...response,
     };
+    let {data: carousel1} = useGetInfoCarouselQuery(1, {refetchOnMountOrArgChange: true});
+    let {data: carousel2} = useGetInfoCarouselQuery(2, {refetchOnMountOrArgChange: true});
+    console.log(carousel1, carousel2);
     let path = '/add-favorites-plus-to-svgrepo-com.svg'
-    let refImg = useRef();
+    let refImg: MutableRefObject<HTMLImageElement | null> = useRef(null);
     let dispatch = useDispatch();
-    let listFavourites = useSelector(state => state.favourites?.list);
-    let currentPoster = listFavourites?.find((item) => item.url === posterUrl);
-
+    let listFavourites = useSelector((state: {favourites: {list: []}}) => state.favourites?.list);
+    let currentPoster = listFavourites?.find((item: {url: string}) => item.url === posterUrl);
 
     if (currentPoster){
         path = '/favorites-from-remove-svgrepo-com.svg';
     }
     if (nameRu === null){
-        if(response.nameOriginal !== null){
-            nameRu = response.nameOriginal;
+        if(nameOriginal !== null){
+            nameRu = nameOriginal;
         }
-        else if(response.nameEn !== null){
-            nameRu = response.nameEn;
+        else if(nameEn !== null){
+            nameRu = nameEn;
         }
     }
     if (description === null){
         description = 'Описание отсутствует';
     }
     if (ratingKinopoisk === null){
-        ratingKinopoisk = response.ratingImdb;
-        ratingKinopoiskVoteCount = response.ratingImdbVoteCount;
+        ratingKinopoisk = ratingImdb;
+        ratingKinopoiskVoteCount = ratingImdbVoteCount;
     }
 
 
@@ -60,15 +60,19 @@ function UpperBlock({response, openModal, isModalOpen, closeModal, id}) {
             setIsAuth(false);
         }
     }, []);
+
     const changeSVG = () => {
-        if (refImg.current.src === "http://localhost:3000/add-favorites-plus-to-svgrepo-com.svg") {
+        let objFavourite: {url: string | undefined, id: number | undefined, rate: number | undefined} =
+            {url: posterUrl, id: id, rate: ratingKinopoisk};
+        if (refImg.current?.src === "http://localhost:3000/add-favorites-plus-to-svgrepo-com.svg") {
             refImg.current.src = "http://localhost:3000/favorites-from-remove-svgrepo-com.svg";
-            dispatch(addFavourite({url: posterUrl, id: id, rate: ratingKinopoisk}))
-        } else {
+            dispatch(addFavourite(objFavourite))
+        } else if (refImg.current?.src === "http://localhost:3000/favorites-from-remove-svgrepo-com.svg") {
             refImg.current.src = "http://localhost:3000/add-favorites-plus-to-svgrepo-com.svg";
-            dispatch(deleteFavourites({url: posterUrl, id: id, rate: ratingKinopoisk}))
+            dispatch(deleteFavourites(objFavourite))
         }
     }
+    let objHistory = {url: posterUrl, id: id, rate: ratingKinopoisk};
     return (
         <div className={styles.About}>
             <div className={styles.obertka_about_logo}>
@@ -89,7 +93,7 @@ function UpperBlock({response, openModal, isModalOpen, closeModal, id}) {
                     <p>{description}</p>
                 </div>
                 <button className={styles.butWatchFilm} onClick={openModal}>
-                    <p onClick={() => dispatch(addHistory({url: posterUrl, id: id, rate: ratingKinopoisk}))}>Начать просмотр</p>
+                    <p onClick={() => dispatch(addHistory(objHistory))}>Начать просмотр</p>
                 </button>
                 <ModalWindow
                     isOpen={isModalOpen} isClose={closeModal} id={id}>

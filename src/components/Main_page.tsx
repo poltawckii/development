@@ -1,21 +1,20 @@
 "use client"
 import React from 'react'
-import Global from './UI/Global/Global';
-import AsideLeft from './UI/Aside_left/AsideLeft';
-import Center from './UI/Center/Center';
+import BlockFilms from './UI/BlockFilms/BlockFilms';
+import AsideLeft from './UI/AsideLeft/AsideLeft';
 import {useGetInfoCarouselQuery} from "@/services/CozyEveningService";
 
 function Main_page() {
-    let {data: carouselDataQuery1} = useGetInfoCarouselQuery(1);
-    let {data: carouselDataQuery2} = useGetInfoCarouselQuery(2);
-  return (
-        <Center>
+    let {data: carousel1} = useGetInfoCarouselQuery(1, {refetchOnMountOrArgChange: true});
+    let {data: carousel2} = useGetInfoCarouselQuery(2, {refetchOnMountOrArgChange: true});
+    return (
+        <div className='Center'>
             <AsideLeft/>
             <div className='Main'>
-                <Global data={carouselDataQuery1} name="Популярное" color='rgba(29, 29, 29, 0.818)' id={undefined} right="26%" left="91%"/>
-                <Global data={carouselDataQuery2} name="Новинки" color='rgba(29, 29, 29, 0.818)' id={undefined} right="26%" left="91%"/>
+                <BlockFilms data={carousel1} name="Популярное"/>
+                <BlockFilms data={carousel2} name="Новинки"/>
             </div>
-        </Center>
+        </div>
   )
 }
 

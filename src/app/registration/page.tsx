@@ -1,15 +1,16 @@
 "use client"
 import React, {useEffect, useState} from 'react';
 import {useRef} from 'react';
-import {useDispatch, useSelector} from "react-redux";
-import postRegistr from "@api/postRegistr";
-import getLogin from "@api/getLogin";
+
 import styles from '../login/Login.module.css'
-import postLogin from "@api/postLogin";
+import {usePostRegistrMutation} from "@/services/CozyEveningLocal";
 const Registration = () => {
     let eMailRef = useRef<HTMLInputElement>(null);
     let passwordRef = useRef<HTMLInputElement>(null);
-    let dispatch = useDispatch();
+    let [postRegistr] = usePostRegistrMutation();
+    let handleRegister = () => {
+        postRegistr({eMail: eMailRef.current?.value, password: passwordRef.current?.value})
+    }
     const [isAuth, setIsAuth] = useState(false);
     useEffect(() => {
         if (localStorage.getItem('token')){
@@ -41,7 +42,7 @@ const Registration = () => {
                     </div>
                 </div>
                 <button className={styles.login_button}
-                        onClick={() => dispatch(postRegistr(eMailRef, passwordRef))}>Регистрация
+                        onClick={handleRegister}>Регистрация
                 </button>
             </div>
         }

@@ -10,7 +10,11 @@ export interface IAbout{
     posterUrl?: string;
     posterUrlPreview?: string;
     ratingKinopoisk?: number;
-    reviewsCount?: number;
+    ratingKinopoiskVoteCount?: number;
     kinopoiskId?: number;
     filmId?: number;
+    nameOriginal: string;
+    nameEn: string,
+    ratingImdbVoteCount: number,
+    ratingImdb: number
 }

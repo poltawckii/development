@@ -1,5 +1,5 @@
 "use client"
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {deleteToken} from "@/store/reducers/tokenSlice";
 import styles from './account.module.css'
@@ -7,10 +7,11 @@ import Link from "next/link";
 import ListHistory from "@components/UI/ListHistory/ListHistory";
 import ListFavourites from "@components/UI/ListFavourites/ListFavourites";
 import AccountInfo from "@components/UI/AccountInfo/AccountInfo";
+import {usePostAvatarMutation} from "@/services/CozyEveningLocal";
 const Page = () => {
     let dispatch = useDispatch();
-    let eMail = useSelector(state => state.token?.currentUser?.eMail);
-    let swap = useSelector(state => state.swap.swap);
+    let eMail = useSelector((state: {token: {currentUser: {eMail: string}}}) => state.token?.currentUser?.eMail);
+    let swap = useSelector((state: {swap: {swap: string}}) => state.swap.swap);
     const LogOut = () => {
         localStorage.removeItem('token')
         console.log(localStorage.getItem('token'));

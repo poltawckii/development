@@ -4,12 +4,11 @@ import React from 'react';
 import{ useEffect, useRef } from "react";
 import styles from "./KinoboxPlayer.module.css"
 interface Props {
-    id?: object;
+    id: number;
 }
 
 function KinoboxPlayer( id : Props) {
-    id = id?.id;
-    console.log(id);
+    let id1 : number = id?.id;
     const containerRef = useRef(null);
 
     useEffect(() => {
@@ -21,7 +20,7 @@ function KinoboxPlayer( id : Props) {
         script.onload = () => {
             if (containerRef.current) {
                 (window as any).kbox(containerRef.current, {
-                    search: { kinopoisk: id },
+                    search: { kinopoisk: id1 },
                     menu: {
                         enabled: false,
                     }

@@ -1,41 +1,25 @@
 "use client"
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import Link from 'next/link';
-import {useGetInfoCarouselQuery, useGetInfoSimilarQuery} from "@/services/CozyEveningService";
 import {usePathname} from "next/navigation";
-import {setCarousel} from "@/store/reducers/carouselSlice";
 import styles from '../BlockFilms/BlockFilms.module.css'
-function Film({data, id}:{data: object, id: undefined | string}) {
-    interface ServerDataItem {
-        posterUrlPreview: string;
-        kinopoiskId: string;
-    }
-    interface SimilarDataItem {
-        posterUrlPreview: string;
-        filmId: string;
-    }
-    const [carouselData, setCarouselData] = useState(undefined);
+import {ICarouse, IState} from "@/types/IState";
+import {useSelector} from "react-redux";
+import {ISimilars} from "@/types/ISimilars";
+function Film({data}:{data: ICarouse | undefined | ISimilars}) {
     const pathname = usePathname();
-    useEffect(() => {
-        if (data) {
-            setCarouselData(data);
-        }
-    }, [data]);
-    console.log(carouselData);
+    let id = useSelector((state : IState) => state.id.id)
         let funcApi = () =>{
             if (pathname === '/') {
-                let response = carouselData?.items;
-                let res_small: { poster: string, id: string }[] = response?.map(item => {
+                return data?.items?.map(item => {
                     return {poster: item?.posterUrlPreview, id: item?.kinopoiskId, rate: item?.ratingKinopoisk}
                 });
-                return res_small;
             }
             else if (pathname === `/film/${id}`) {
-                let similarData = data?.items;
-                let res_small: { poster: string, id: string }[] = similarData?.map(item => {
+                return data?.items?.map((item) => {
                     return ({poster: item?.posterUrlPreview, id: item?.filmId, rate: item?.ratingKinopoisk})
                 });
-                return res_small;
+
             }
         }
         let res_small = funcApi();

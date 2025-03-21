@@ -1,6 +1,7 @@
 import axios from 'axios';
+import React from "react";
 
-const fetchFilters = async (refName) => {
+const fetchFilters = async (refName : React.RefObject<HTMLInputElement> )  => {
     let name = refName.current?.value;
     try {
         //TODO в зависимости от наличии велю рефов добавлять в запрос(запрос - станет переменной) параметры и их значения.
@@ -11,7 +12,7 @@ const fetchFilters = async (refName) => {
             },
         });
         console.log(response);
-        return response?.data;
+        return response?.data.docs;
     } catch (error) {
         console.error('Ошибка при запросе трейлера:', error);
         return null; // Или выбросить ошибку если требуется

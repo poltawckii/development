@@ -1,11 +1,12 @@
 
 import axios from "axios";
 import {setToken} from "@/store/reducers/tokenSlice";
+import {RefObject} from "react";
 
-const postLogin = (eMailRef, passwordRef) => {
+const postLogin = (eMailRef : RefObject<HTMLInputElement>, passwordRef : RefObject<HTMLInputElement>) => {
         let eMail = eMailRef.current?.value;
         let password = passwordRef.current?.value;
-        return async dispatch => {
+        return async (dispatch:any) => {
             try{
                 const response = await axios.post('http://localhost:5000/api/auth/login', {
                     eMail,
@@ -16,7 +17,7 @@ const postLogin = (eMailRef, passwordRef) => {
                 localStorage.setItem('token', response?.data.token)
                 //TODO здеся поменяй чтото в сторе
             }
-            catch(e){
+            catch(e:any){
                 console.log(e?.response?.data.message);
             }
             finally{

@@ -1,25 +1,25 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import {IUser, IUserState} from "@/types/IUser";
 
-interface tokenState {
-    token: string | undefined;
-}
 
-const initialState: tokenState = {
+const initialState: IUserState = {
     token: undefined ,
+    isAuth: false,
+    user: undefined
 };
 
 export const tokenSlice = createSlice({
     name: 'token',
     initialState,
     reducers: {
-        setToken: (state, action: PayloadAction<string | undefined>) => {
+        setToken: (state, action: PayloadAction<IUser>) => {
             state.token = action.payload?.token;
-            state.currentUser = action.payload?.user;
+            state.user = action.payload?.user;
             state.isAuth = true;
         },
-        deleteToken: (state, action: PayloadAction<string | undefined>) => {
+        deleteToken: (state) => {
             state.token = undefined;
-            state.currentUser = undefined;
+            state.user = undefined;
             state.isAuth = false;
         }
     },

@@ -35,7 +35,7 @@
 .find{
     display:flex;
     width: 100%;
-    justify-content: end;
+    justify-content: flex-end;
 }
 .logoname{
     display: flex;
@@ -59,7 +59,7 @@
     color: rgba(161, 161, 161, 0.984);
     text-decoration: none;
     display: flex;
-    margin-bottom: 0px;
+    margin-bottom: 0;
     align-items: center;
 }
 .joinRegister{
