@@ -2,7 +2,7 @@
 import React from 'react'
 import Link from 'next/link';
 import {usePathname} from "next/navigation";
-import styles from '../BlockFilms/BlockFilms.module.css'
+import styles from './Film.module.css'
 import {ICarouse, IState} from "@/types/IState";
 import {useSelector} from "react-redux";
 import {ISimilars} from "@/types/ISimilars";
@@ -24,12 +24,12 @@ function Film({data}:{data: ICarouse | undefined | ISimilars}) {
         }
         let res_small = funcApi();
         return (
-    <div className="onWheel" >
+    <div className={styles.onWheel} >
         {res_small?.map((link, index) => (
             <Link
                 key={index}
                 href={`/film/${link.id}`}
-                className='Film'>
+                className={styles.Film}>
                 <img alt="" src={link.poster} key={index} id={'Film'}/>
                     <div className={styles.rateFilm}>
                 {(link.rate === null) ?

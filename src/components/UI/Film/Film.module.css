@@ -1,0 +1,31 @@
+.Film:hover{
+    transform: scale(1.1 , 1.1);
+}
+.Film img{
+    object-fit: cover;
+    overflow: auto;
+}
+.Film {
+    position: relative;
+    display: flex;
+    width:152px;
+    border: 1px solid rgba(255, 255, 255, 0.466);
+    transition: transform 0.5s ease-in-out;
+}
+.rateFilm{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    top: 6px;
+    left: 6px;
+    width: 20%;
+    height: 10%;
+    background-color: blue;
+}
+.rateFilm h4{
+    color: rgba(255, 255, 255, 0.466);
+}
+.onWheel {
+    display: flex;
+    width: 100%;
+}

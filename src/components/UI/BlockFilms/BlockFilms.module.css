@@ -50,19 +50,6 @@
         display: none;
     }
 }
-.rateFilm{
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    top: 6px;
-    left: 6px;
-    width: 20%;
-    height: 10%;
-    background-color: blue;
-}
-.rateFilm h4{
-    color: rgba(255, 255, 255, 0.466);
-}
 .Global {
     display: flex;
     flex-direction: column;

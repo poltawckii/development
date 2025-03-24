@@ -1,7 +1,6 @@
 "use client"
 import Navbar from '@components/UI/Navbar/Navbar';
 import Footer from "@components/UI/Footer/Footer";
-import '../assets/css/style.css';
 import {Metadata} from "next";
 import {ReactNode} from "react";
 import Providers from "./providers";
@@ -19,8 +18,11 @@ export default function RootLayout({children} : { children: ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <title>Cozy Evening - Онлайн-Кинотеатр</title>
       </head>
-      <body>
-      <div id="root"></div>
+      <body style={{
+          margin: 0,
+          padding: 0,
+          boxSizing: "border-box", }}>
+      <div id="root"/>
       <Providers>
           <Navbar/>
           {children}
@@ -28,5 +30,5 @@ export default function RootLayout({children} : { children: ReactNode }) {
       </Providers>
       </body>
       </html>
-)
+  )
 }

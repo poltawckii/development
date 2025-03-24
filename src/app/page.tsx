@@ -1,6 +1,6 @@
 "use client"
 import React, {useEffect} from 'react';
-import Main_page from "@components/Main_page";
+import MainPage from "@components/UI/MainPage/MainPage";
 import {useLazyGetLoginQuery} from "@/services/CozyEveningLocal";
 const Page = () => {
     let [getLogin] = useLazyGetLoginQuery();
@@ -8,7 +8,7 @@ const Page = () => {
         getLogin()
     }, []);
   return (
-      <Main_page/>
+      <MainPage/>
   );
 }
 
