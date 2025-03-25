@@ -25,6 +25,7 @@ function UseNavbarReq(newValue: string | '') {
                     'Content-Type': 'application/json',
                 },
             });
+
             setPosters(response.data); // Предполагается, что данные находятся в response.data
             console.log(value);
             console.log(response.data);
