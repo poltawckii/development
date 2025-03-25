@@ -2,6 +2,7 @@
 import {useCallback, useEffect, useRef, useState} from 'react';
 import axios from "axios";
 import _ from "lodash";
+import {API_KEY, API_URL} from "@constants/api";
 function UseNavbarReq(newValue: string | '') {
     let [value, setValue] = useState(newValue);
     const [posters, setPosters] = useState<{films: Array<any>} | undefined >();
@@ -18,9 +19,9 @@ function UseNavbarReq(newValue: string | '') {
     const fetchPosters = useCallback(async (value: string | '') => {
         setLoading(true); // Устанавливаем загрузку перед запросом
         try {
-            const response = await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword?keyword=${value}`, {
+            const response = await axios.get(`${API_URL}/v2.1/films/search-by-keyword?keyword=${value}`, {
                 headers: {
-                    'X-API-KEY': '4924c109-65ff-45a5-9ddc-755a4b769c30',
+                    'X-API-KEY': API_KEY,
                     'Content-Type': 'application/json',
                 },
             });
